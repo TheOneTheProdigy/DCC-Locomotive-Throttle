@@ -3,7 +3,7 @@
 // ********************************************************************************************
 
 // false = Counter clockwise  true = clockwise
-#define ENCODER_ROTATION_CLOCKWISE_IS_INCREASE_SPEED                     false
+#define ENCODER_ROTATION_CLOCKWISE_IS_INCREASE_SPEED                     true
 
 // Define what the rotary encoder button does.   (Pushing down on the knob)
 // By default it will stop the loco if moving, then a second push will change the direction.
@@ -58,7 +58,7 @@
 // to use multiple throttles, one of the keys or buttons will need to be defined as NEXT_THROTTLE.  (keypad 5 is by default)
 // Maximum supported by the WiThrottleProtocol is 6
 
-// #define MAX_THROTTLES                 2          // uncomment and increase the number if you always need more that two throttles
+// #define MAX_THROTTLES                 5          // uncomment and increase the number if you always need more that two throttles
 
 // ********************************************************************************************
 
@@ -124,7 +124,7 @@
 
 // this is one of the common 1.3 inch OLED displays
 
-// #define OLED_TYPE U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ 22, /* data=*/ 23);
+#define OLED_TYPE U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ 22, /* data=*/ 23);
 
 // *******************************************************************************************************************
 // Debugging
