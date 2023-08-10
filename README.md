@@ -41,14 +41,6 @@ Required Components
 ![Assembly diagram - Optional Additional Buttons](DCCTrainThrottle%20-%20Optional%20Buttons%20-%20pinouts%20v0.1.png)
 
 
-Notes:
-
-* My case was 3D Printed for me by peteGSX (See the [Thingiverse.](https://www.thingiverse.com/thing:5440351) )
-* The 3x4 keypad petGSX designed the case for came from Jaycar and is slightly narrower than the one you see in the 'deconstructed' view in the video above.
-* The case requires about a dozen M2x4mm screws
-
-* For a different take on what is possible by extending the design, have a look at: https://1fatgmc.com/RailRoad/DCC/page-5-B.html
-
 ## Loading the code
 
 1. Download the Arduino IDE.  
@@ -153,11 +145,7 @@ Notes:
 - The controller will automatically shut down if no SSID is selected or entered in 4 minutes (to conserve the battery)
 
 **ToDo:**
-- Speed button repeat (i.e. hold the button down)
-- Deal with unexpected disconnects better
-  - automatic attempt to reconnect
-- Keep a list of ip addresses and ports if mDNS doesn't provide any
-- Remember (for the current session only) recently selected locos
+
 
 ### Command menu:
 - 0-9 keys = pressing these directly will do whatever you has been preset in the sketch for them to do  (see \# below)
