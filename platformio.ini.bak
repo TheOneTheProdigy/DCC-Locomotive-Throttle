@@ -24,5 +24,5 @@ lib_deps = so in engine
 	olikraus/U8g2@^2.33.3
 monitor_speed = 115200
 build_flags =
-  -I "C:/Users/lance/Documents/Arduino/libraries/WiThrottleProtocol/src"
-  -I "C:/Users/lance/Documents/Arduino/libraries"
+  -I "C:/Users/akers/Documents/Arduino/libraries/WiThrottleProtocol/src"
+  -I "C:/Users/akers/Documents/Arduino/libraries"
