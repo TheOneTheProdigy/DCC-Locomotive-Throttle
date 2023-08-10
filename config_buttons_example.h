@@ -1,4 +1,4 @@
-#define DEVICE_NAME "WiT Controller"
+#define DEVICE_NAME "DCCTrainThrottle"
 
 // ********************************************************************************************
 

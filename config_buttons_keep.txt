@@ -1,4 +1,4 @@
-#define DEVICE_NAME "WiT Controller"
+#define DEVICE_NAME "DCCTrainThrottle"
 
 // false = Counterclockwise  true = clockwise
 #define ENCODER_ROTATION_CLOCKWISE_IS_INCREASE_SPEED true  // changed this to true to have the throttl rotate clockwise
