@@ -1,6 +1,6 @@
 # DCCTrainController
 
-A DCCTrainController is a simple DIY, handheld controller that talks to a wThrottle Server (JMRI, DCC++EX and many others) using the wiThrottle protocol to control DCC model trains. 
+The DCCTrainController is a simple DIY, handheld controller that talks to a wThrottle Server (JMRI, DCC++EX and many others) using the wiThrottle protocol to control DCC model trains. 
 
 ---
 
