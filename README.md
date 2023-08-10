@@ -30,7 +30,8 @@ Required Components
 * Polymer Lithium Ion Battery LiPo Maker Focus 2000mAh 3.7V JST Connector. On Battery BMS is a must for safety.
 * KY-040 Rotary Encoder Module
 * OLED Display 1.3" 128x64 I2C IIC SSD1306
-* Case - 3d printed (see below)
+* Case - 3D Printed
+* Knob 3D Printed
 * Wire - If you plan to solder the connections,which is the recommended approach, then stranded, coloured wire is advisable.
 * Optional: Up to 7 additional buttons can be added, each with their own independent commands.
 
