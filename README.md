@@ -1,13 +1,6 @@
-# WiTcontroller
+# DCCTrainController
 
-A WiTcontroller is a simple DIY, handheld controller that talks to a wThrottle Server (JMRI, DCC++EX and many others) using the wiThrottle protocol to control DCC model trains. 
-
-[See a video of it in use here.](https://youtu.be/RKnhfBCP_SQ)
-
-
-[Discussion on Discord.](https://discord.com/channels/713189617066836079/735019837746577438)
-
-[3d Printed Case](https://www.thingiverse.com/thing:5440351)
+A DCCTrainController is a simple DIY, handheld controller that talks to a wThrottle Server (JMRI, DCC++EX and many others) using the wiThrottle protocol to control DCC model trains. 
 
 ---
 
@@ -19,7 +12,7 @@ A WiTcontroller is a simple DIY, handheld controller that talks to a wThrottle S
 
 2. Loading the code (sketch) requires downloading of one of the IDEs, this sketch, the libraries, etc. so some experience with Arduinos is helpful, but not critical.
 
-3. A wiThrottle Server to connect to. WiTcontroller will work with any wiThrottle Server. e.g.
+3. A wiThrottle Server to connect to. DCCTrainController will work with any wiThrottle Server. e.g.
 
     * JMRI
     * DCC++EX
@@ -32,21 +25,20 @@ A WiTcontroller is a simple DIY, handheld controller that talks to a wThrottle S
 
 Required Components
 
-* WeMos Lite LOLIN32  (ESP32 Arduino with LiPo charger) ([Example](https://www.ebay.com.au/itm/284800618644?hash=item424f709094:g:-soAAOSwHslfC9ce&frcectupt=true))
-* 3x4 Keypad  ([Example](https://www.jaycar.com.au/12-key-numeric-keypad/p/SP0770?pos=2&queryId=20aedf107668ad42c6fe1f8b7f7a9ca7))
-* Polymer Lithium Ion Battery LiPo 400mAh 3.7V 502535 JST Connector (or larger capacity) ([500mAh Example](https://www.ebay.com.au/itm/133708965793?hash=item1f21ace7a1:g:tlwAAOSwfORgYqYK))
-* KY-040 Rotary Encoder Module ([Example](https://www.ebay.com.au/itm/394147297055?hash=item5bc502771f:g:gr0AAOSwcixiwo2~&frcectupt=true))
-* OLED Display 0.96" 128x64 Blue I2C IIC SSD1306 ([Example](https://www.ebay.com.au/itm/273746192621?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2060353.m2749.l2649))
-* Case - my one was 3d printed (see below)
-* Knob ([Example](https://www.jaycar.com.au/35mm-knob-matching-equipment-style/p/HK7766?pos=7&queryId=cbd19e2486968bca41273cc2dbce54a4&sort=relevance))
-* Wire - If you plan to solder the connections,which is the recommended approach, then stranded, coloured wire is advisable.  ([Example](https://www.jaycar.com.au/rainbow-cable-16-core-sold-per-metre/p/WM4516))
+* ESP32 Type C With Onboard Battery Circuit.
+* 3x4 Keypad Matrix
+* Polymer Lithium Ion Battery LiPo Maker Focus 2000mAh 3.7V JST Connector. On Battery BMS is a must for safety.
+* KY-040 Rotary Encoder Module
+* OLED Display 1.3" 128x64 I2C IIC SSD1306
+* Case - 3d printed (see below)
+* Wire - If you plan to solder the connections,which is the recommended approach, then stranded, coloured wire is advisable.
 * Optional: Up to 7 additional buttons can be added, each with their own independent commands.
 
 *Standard Configuration Pinouts*
-![Assembly diagram](WiTcontroller%20pinouts%20v0.1.png)
+![Assembly diagram](DCCTrainController%20pinouts%20v0.1.png)
 
 *Pinouts for Optional Additional Buttons*
-![Assembly diagram - Optional Additional Buttons](WiTcontroller%20-%20Optional%20Buttons%20-%20pinouts%20v0.1.png)
+![Assembly diagram - Optional Additional Buttons](DCCTrainController%20-%20Optional%20Buttons%20-%20pinouts%20v0.1.png)
 
 
 Notes:
@@ -73,13 +65,13 @@ Notes:
        * Install *GitHub Desktop* from https://desktop.github.com/
        * Create a free account on GitHub and authorise the app to allow it to connect top GitHub
        * Select *file* -> *Clone Repository* - or 'Clone an repository from the internet' from the welcome page then select the 'URL' tab
-       * Enter *https://github.com/flash62au/WiTcontroller* as the URL
+       * Enter *https://github.com/flash62au/DCCTrainController* as the URL
        * Select a local folder to install it.  The default folder for the Arduino usually looks like "...username\Documents\Arduino\". (This is a good but not essential place to put it.)
        * Click *Clone*
        * **Subsequently**  (Anytime after the first 'clone')
          * click *Fetch Origin* and any changes to the code will be bought down to you PC, but you config_buttons.h and config_network.h will not be touched.
     * Download 
-       * Open *https://github.com/flash62au/WiTcontroller*
+       * Open *https://github.com/flash62au/DCCTrainController*
        * Click the green "Code" button and select download zip
        * Extract the zip file to a local folder.  The default folder for the Arduino usually looks like "...username\Documents\Arduino\". This is a good but not essential place to put it.
 4. Load the needed libraries to your PC. These can loaded from the *Library Manager* in the *Arduino IDE*.
@@ -102,19 +94,19 @@ Notes:
     * Click *Upload* 
 
 Notes: 
-   * WiTcontroller version 1.19 or later requires WiThrottleProtocol version 1.1.3 or later.
-   * WiTcontroller version 1.06 or later requires WiThrottleProtocol version 1.1.2 or later.
-   * WiTcontroller version 1.01 or later requires WiThrottleProtocol version 1.1.0 or later.
-   * WiTcontroller version 0.10 or later requires WiThrottleProtocol version 1.0.3 or later.
+   * DCCTrainController version 1.19 or later requires WiThrottleProtocol version 1.1.3 or later.
+   * DCCTrainController version 1.06 or later requires WiThrottleProtocol version 1.1.2 or later.
+   * DCCTrainController version 1.01 or later requires WiThrottleProtocol version 1.1.0 or later.
+   * DCCTrainController version 0.10 or later requires WiThrottleProtocol version 1.0.3 or later.
    * The *WiFi.h* and *ESPmDNS.h* libraries were automatically installed for me when I installed the esp32 boards, however you may need to install them manually.
    * Later versions of the esp board support are available and do appear to work, but if you have difficulties version 1.0.6 appears to be stable.
    * Later versions of the libraries generally should work, but if you have difficulties use the versions listed above.
-   * To get the WiTcontroller sketch I recommend using either the git command line, or the far more friendly 'GitHub Desktop' app.  See instructions above.
+   * To get the DCCTrainController sketch I recommend using either the git command line, or the far more friendly 'GitHub Desktop' app.  See instructions above.
    * If you receive and error related to Python, and you are on MacOs 12 and above please edit the platform file, change from python to python3 as follows; preferences->user/path/arduino/packages/hardware/esp32/version/platform.txt and edit the line that looks as follows:tools.gen_esp32part.cmd=python3 "{runtime.platform.path}/tools/gen_esp32part.py"
 
 ---
 
-## Using WiTController
+## Using DCCTrainController
 
 **Currently functioning:**
 - Provides a list of discovered SSIDs with the ability to choose one. When you select one:
