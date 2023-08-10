@@ -1,6 +1,6 @@
 const String appName = "DCCTrainThrottle";
 const String appVersion = "     Version 1.28";
-const String msg_start = "Start";
+const String msg_start = "Starting Prime Mover";
 
 const String menu_menu =                   "* Menu                # Key Defs";
 const String menu_menu_hash_is_functions = "* Menu                          # Fn";
@@ -47,7 +47,7 @@ const String msg_address_label =         "IP address: ";
 const String msg_connection_failed =     "Connection failed";
 const String msg_disconnected =          "Disconnected";
 const String msg_auto_sleep =           "Waited too long for Select";
-const String msg_start_sleep =           "Shutting Down.        E.btn ON";
+const String msg_start_sleep =           "Shutting Down Prime Mover";
 const String msg_throttle_number  =      "          Throttle #";
 const String msg_no_loco_selected =      "        No Loco selected";
 const String msg_enter_password =        "Enter Password";
