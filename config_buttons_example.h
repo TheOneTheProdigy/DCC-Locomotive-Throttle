@@ -1,4 +1,4 @@
-#define DEVICE_NAME "DCCTrainThrottle"
+#define DEVICE_NAME "Loco Throttle"
 
 // ********************************************************************************************
 
@@ -15,7 +15,7 @@
 // true = if the locos(s) are stationary, clicking the encoder button will toggle the direction
 // this only takes effect if the ENCODER_BUTTON_ACTION (above) is set to SPEED_STOP_THEN_TOGGLE_DIRECTION
 
-#define TOGGLE_DIRECTION_ON_ENCODER_BUTTON_PRESSED_WHEN_STATIONAY         true
+#define TOGGLE_DIRECTION_ON_ENCODER_BUTTON_PRESSED_WHEN_STATIONARY         true
 
 // ********************************************************************************************
 
@@ -27,11 +27,11 @@
 #define CHOSEN_KEYPAD_2_FUNCTION     FUNCTION_2
 #define CHOSEN_KEYPAD_3_FUNCTION     FUNCTION_3
 #define CHOSEN_KEYPAD_4_FUNCTION     FUNCTION_4
-#define CHOSEN_KEYPAD_5_FUNCTION     NEXT_THROTTLE
-#define CHOSEN_KEYPAD_6_FUNCTION     SPEED_MULTIPLIER
-#define CHOSEN_KEYPAD_7_FUNCTION     DIRECTION_REVERSE
-#define CHOSEN_KEYPAD_8_FUNCTION     E_STOP
-#define CHOSEN_KEYPAD_9_FUNCTION     DIRECTION_FORWARD
+#define CHOSEN_KEYPAD_5_FUNCTION     FUNCTION_5
+#define CHOSEN_KEYPAD_6_FUNCTION     FUNCTION_6
+#define CHOSEN_KEYPAD_7_FUNCTION     FUNCTION_7
+#define CHOSEN_KEYPAD_8_FUNCTION     FUNCTION_8
+#define CHOSEN_KEYPAD_9_FUNCTION     FUNCTION_9
 
 // text that will appear when you press #
 // if you rearrange the items above, modify this text to suit    * and # cannot be remapped here
@@ -41,11 +41,11 @@
 #define CHOSEN_KEYPAD_2_DISPLAY_NAME     "2 Horn"
 #define CHOSEN_KEYPAD_3_DISPLAY_NAME     "3 F3"
 #define CHOSEN_KEYPAD_4_DISPLAY_NAME     "4 F4"
-#define CHOSEN_KEYPAD_5_DISPLAY_NAME     "5 Nxt Ttl"
-#define CHOSEN_KEYPAD_6_DISPLAY_NAME     "6 X Spd"
-#define CHOSEN_KEYPAD_7_DISPLAY_NAME     "7 Rev"
-#define CHOSEN_KEYPAD_8_DISPLAY_NAME     "8 Estop"
-#define CHOSEN_KEYPAD_9_DISPLAY_NAME     "9 Fwd"
+#define CHOSEN_KEYPAD_5_DISPLAY_NAME     "5 F5"
+#define CHOSEN_KEYPAD_6_DISPLAY_NAME     "6 Brakes"
+#define CHOSEN_KEYPAD_7_DISPLAY_NAME     "7 F7"
+#define CHOSEN_KEYPAD_8_DISPLAY_NAME     "8 F8"
+#define CHOSEN_KEYPAD_9_DISPLAY_NAME     "9 F9"
 
 // by default, # will show the list above. 
 // if you change the following line to true, it will take you to the Loco Function Labels screen directly
@@ -58,7 +58,7 @@
 // to use multiple throttles, one of the keys or buttons will need to be defined as NEXT_THROTTLE.  (keypad 5 is by default)
 // Maximum supported by the WiThrottleProtocol is 6
 
-// #define MAX_THROTTLES                 5          // uncomment and increase the number if you always need more that two throttles
+// #define MAX_THROTTLES                 2          // uncomment and increase the number if you always need more that two throttles
 
 // ********************************************************************************************
 
@@ -69,7 +69,7 @@
 
 // speed increase for each click of the encoder 
 
-#define SPEED_STEP                       4
+#define SPEED_STEP                       2
 #define SPEED_STEP_MULTIPLIER            3          // for 'fast' speed steps
 
 // Additional multiplier.  If the multiplier is enabled from the menu, each rotation of the encoder becomes the speedStep * the AdditionalMultiplier
@@ -81,7 +81,7 @@
 // Note: there will be rounding errors!
 
 // uncomment this line to display the speeds a percentage.
-// #define DISPLAY_SPEED_AS_PERCENT         true
+#define DISPLAY_SPEED_AS_PERCENT         true
 // uncomment this line to display the speeds as 0-28.
 // #define DISPLAY_SPEED_AS_0_TO_28         true
 
@@ -90,6 +90,7 @@
 #define CONSIST_FUNCTION_FOLLOW_F0                  CONSIST_ALL_LOCOS            // lights
 #define CONSIST_FUNCTION_FOLLOW_F1                  CONSIST_LEAD_LOCO            // bell
 #define CONSIST_FUNCTION_FOLLOW_F2                  CONSIST_LEAD_LOCO            // horn
+#define CONSIST_FUNCTION_FOLLOW_F6                  CONSIST_ALL_LOCOS            // brakes
 #define CONSIST_FUNCTION_FOLLOW_OTHER_FUNCTIONS     CONSIST_LEAD_LOCO
 
 // ********************************************************************************************
@@ -129,9 +130,9 @@
 // *******************************************************************************************************************
 // Debugging
 
-// DCCTrainThrottle console debug messages are ENABLED by default
+// WitController console debug messages are ENABLED by default
 // to disable to console messages, set the following to  1    (i.e. 0 = on  1 = off)
-#define DCCTrainThrottle_DEBUG    0
+#define WITCONTROLLER_DEBUG    0
 
 // WiThrottleProtocol console debug messages are DISABLED by default
 // to enable console messages, set the follow to  0    (i.e. 0 = on  1 = off)
