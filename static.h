@@ -1,4 +1,4 @@
-const String appName = "DCCLocoThrottle";
+const String appName = "Loco Throttle";
 const String appVersion = "     Version 1.28";
 const String msg_start = "Starting Prime Mover";
 
@@ -18,7 +18,7 @@ const String menu_select_wit_entry =        "0-9   * Back  # Go   E.btn OFF";
 const String menu_select_ssids =            "0-9     # Search      E.btn OFF";
 const String menu_select_ssids_from_found = "0-4    9 List  # Pg   E.btn OFF";
 
-const String menu_enter_ssid_password =     "E Chrs  E.btn Slct  # Go  * Bck";
+const String menu_enter_ssid_password =     "E Chrs  E.btn Slct  # Go  * Del";
 
 const String direct_command_list = "Direct Commands";
 
@@ -30,7 +30,7 @@ const String direction_reverse_indicator = "'";
 
 // const String function_states = "fn ";
 
-const String msg_browsing_for_service ="Browsing for WiT services";
+const String msg_browsing_for_service ="Browsing For WiT Server";
 const String msg_browsing_for_ssids ="Browsing for SSIDs";
 
 const String msg_no_ssids_found =        "No SSIDs found";
@@ -106,10 +106,10 @@ const int glyph_speed_step = 0x00d6;
 #define MENU_ITEM_DROP_LOCO '2'
 #define MENU_ITEM_TOGGLE_DIRECTION '3'
 #define MENU_ITEM_SPEED_STEP_MULTIPLIER '4'
-#define MENU_ITEM_THROW_POINT '5'
-#define MENU_ITEM_CLOSE_POINT '6'
-#define MENU_ITEM_ROUTE '7'
-#define MENU_ITEM_TRACK_POWER '8'
+#define MENU_ITEM_ROUTE '5'
+#define MENU_ITEM_THROW_POINT '6'
+#define MENU_ITEM_CLOSE_POINT '7'
+#define MENU_ITEM_CHANGE_THROTTLE '8'
 #define MENU_ITEM_EXTRAS '9'
 
 const String menuText[12][3] = {
@@ -117,13 +117,12 @@ const String menuText[12][3] = {
   {"Add Loco",    "addr+# Add  * Cancel  # Roster", ""},   //1
   {"Drop Loco",   "addr+# One   * Cancel    # All", ""},   //2
   {"Toggle Dir",  "# Toggle                      ", ""},   //3
-  {"X Speed Step","* Cancel                # Toggle", ""}, //4
-  {"Throw Point", "no+# Throw   * Cancel   # List", ""},   //5
-  {"Close Point", "no+# Close   * Cancel   # List", ""},   //6
-  {"Route",       "no+# Select  * Cancel   # List", ""},   //7
-  {"Trk Power",   "* Cancel                # Toggle", ""}, //8 
+  {"Speed Steps", "* Cancel                # Toggle", ""}, //4
+  {"Route",       "no+# Select  * Cancel   # List", ""},   //5
+  {"Throw Point", "no+# Throw   * Cancel   # List", ""},   //6
+  {"Close Point", "no+# Close   * Cancel   # List", ""},   //7
+  {"Nxt Loco",   "* Cancel                # Toggle", ""}, //8 
   {"Extras",      "no Select  * Cancel         ", ""},   //9
-
   {"Heartbeat",   "* Close                       ", ""},   //10
   {"Edit Consist Facing","no Chng Facing   * Close", ""}    //11
 };
@@ -146,8 +145,8 @@ const int menuCharsRequired[12] = {  // 0=none effectively a direct command / 1=
 const String extraSubMenuText[8] = { 
    "Fnc/Key Tgl",    //0
    "Edt Consist",    //1
-   "",               //2
-   "Heartbt Tgl",      //3  
+   "Trk Power",      //2
+   "Heartbt Tgl",    //3  
    "#Throttles +",   //4
    "#Throttles -",   //5
    "Disconnect",     //6
@@ -155,7 +154,7 @@ const String extraSubMenuText[8] = {
 
 #define EXTRA_MENU_CHAR_FUNCTION_KEY_TOGGLE    '0'
 #define EXTRA_MENU_CHAR_EDIT_CONSIST           '1'
-#define EXTRA_MENU_CHAR_TBA                    '2'
+#define EXTRA_MENU_CHAR_TRACK_POWER            '2'
 #define EXTRA_MENU_CHAR_HEARTBEAT_TOGGLE       '3'
 #define EXTRA_MENU_CHAR_INCREASE_MAX_THROTTLES '4'
 #define EXTRA_MENU_CHAR_DECREASE_MAX_THROTTLES '5'
@@ -203,7 +202,7 @@ String witServerIpAndPortEntryMask = "###.###.###.###:#####";
 #endif
 
 #ifndef SSID_CONNECTION_TIMEOUT 
-  #define SSID_CONNECTION_TIMEOUT 10000
+  #define SSID_CONNECTION_TIMEOUT 15000
 #endif
 
 const char ssidPasswordBlankChar = 164;
@@ -227,8 +226,8 @@ const char ssidPasswordBlankChar = 164;
 #define CONSIST_LEAD_LOCO 0
 #define CONSIST_ALL_LOCOS 1
 
-#ifndef DCCLocoThrottle_DEBUG 
-  #define DCCLocoThrottle_DEBUG    0
+#ifndef WITCONTROLLER_DEBUG 
+  #define WITCONTROLLER_DEBUG    0
 #endif
 
 #ifndef WITHROTTLE_PROTOCOL_DEBUG
