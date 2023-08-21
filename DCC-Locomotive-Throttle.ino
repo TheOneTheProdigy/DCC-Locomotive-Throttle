@@ -684,11 +684,11 @@ void browseWitService() {
       // debug_print("txt 1: key: "); debug_print(MDNS.txtKey(i,1)); debug_print(" value: '"); debug_print(MDNS.txt(i,1)); debug_println("'");
       // debug_print("txt 2: key: "); debug_print(MDNS.txtKey(i,2)); debug_print(" value: '"); debug_print(MDNS.txt(i,2)); debug_println("'");
       // debug_print("txt 3: key: "); debug_print(MDNS.txtKey(i,3)); debug_print(" value: '"); debug_println(MDNS.txt(i,3)); debug_println("'");
-      if (MDNS.hasTxt(i,"withrottle")) {
+      if (MDNS.hasTxt(i,"jmri")) {
         String node = MDNS.txt(i,"node");
         node.toLowerCase();
         if (foundWitServersNames[i].equals(node)) {
-          foundWitServersNames[i] = "WITHROTTLE  (v" + MDNS.txt(i,"withrottle") + ")";
+          foundWitServersNames[i] = "JMRI  (v" + MDNS.txt(i,"jmri") + ")";
         }
       }
     }
