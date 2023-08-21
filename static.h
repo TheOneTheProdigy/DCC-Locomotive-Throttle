@@ -1,4 +1,4 @@
-const String appName = "DCCTrainThrottle";
+const String appName = "DCCLocoThrottle";
 const String appVersion = "     Version 1.28";
 const String msg_start = "Starting Prime Mover";
 
@@ -227,8 +227,8 @@ const char ssidPasswordBlankChar = 164;
 #define CONSIST_LEAD_LOCO 0
 #define CONSIST_ALL_LOCOS 1
 
-#ifndef DCCTrainThrottle_DEBUG 
-  #define DCCTrainThrottle_DEBUG    0
+#ifndef DCCLocoThrottle_DEBUG 
+  #define DCCLocoThrottle_DEBUG    0
 #endif
 
 #ifndef WITHROTTLE_PROTOCOL_DEBUG
