@@ -154,7 +154,7 @@ Notes:
   - 1 = Add loco.  
      - Followed by the loco number, followed by \# to complete.  e.g. to select loco 99 you would press '\*199\#'
      - or \# alone to show the roster   \# again will show the next page
-  - 2 = release loco:
+  - 2 = Release loco:
      - Followed by the loco number, followed by \# to release an individual loco.  e.g. to deselect the loco 99 you would press '\*299\#'
      - Otherwise followed directly by \#  to release all e.g. '\*2\#'
   - 3 = Toggle direction.
