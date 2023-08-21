@@ -1,18 +1,14 @@
 /**
- * This app turns the ESP32 into a Bluetooth LE keyboard that is intended to act as a dedicated
- * gamepad for the JMRI or any wiThrottle server.
+ Loco Throttle V1.28
 
-  Instructions:
-  - Update WiFi SSIDs and passwords as necessary in config_network.h.
-  - Flash the sketch 
  */
 
-#include <WiFi.h>                 // https://github.com/espressif/arduino-esp32/tree/master/libraries/WiFi     GPL 2.1
-#include <ESPmDNS.h>              // https://github.com/espressif/arduino-esp32/blob/master/libraries/ESPmDNS (You should be able to download it from here https://github.com/espressif/arduino-esp32 Then unzip it and copy 'just' the ESPmDNS folder to your own libraries folder )
-#include <WiThrottleProtocol.h>   // https://github.com/TheOneTheProdigy/WiThrottleProtocol                           Creative Commons 4.0  Attribution-ShareAlike
-#include <AiEsp32RotaryEncoder.h> // https://github.com/igorantolic/ai-esp32-rotary-encoder                    GPL 2.0
-#include <Keypad.h>               // https://www.arduinolibraries.info/libraries/keypad                        GPL 3.0
-#include <U8g2lib.h>              // https://github.com/olikraus/u8g2  (Just get "U8g2" via the Arduino IDE Library Manager)   new-bsd
+#include <WiFi.h>                 // https://github.com/espressif/arduino-esp32/tree/master/libraries/WiFi     
+#include <ESPmDNS.h>              // https://github.com/espressif/arduino-esp32/blob/master/libraries/ESPmDNS 
+#include <WiThrottleProtocol.h>   // https://github.com/flash62au/WiThrottleProtocol                          
+#include <AiEsp32RotaryEncoder.h> // https://github.com/igorantolic/ai-esp32-rotary-encoder                    
+#include <Keypad.h>               // https://www.arduinolibraries.info/libraries/keypad                     
+#include <U8g2lib.h>              // https://github.com/olikraus/u8g2  
 #include <string>
 
 #include "config_network.h"      // LAN networks (SSIDs and passwords)
@@ -22,9 +18,9 @@
 #include "static.h"              // change for non-english languages
 #include "actions.h"
 
-#include "DCC-Locomotive-Throttle.h"
+#include "WiTcontroller.h"
 
-#if DCC-Locomotive-Throttle_DEBUG == 0
+#if WITCONTROLLER_DEBUG == 0
  #define debug_print(...) Serial.print(__VA_ARGS__)
  #define debug_println(...) Serial.print(__VA_ARGS__); Serial.print(" ("); Serial.print(millis()); Serial.println(")")
  #define debug_printf(...) Serial.printf(__VA_ARGS__)
@@ -157,7 +153,7 @@ const char* deviceName = DEVICE_NAME;
 const boolean encoderRotationClockwiseIsIncreaseSpeed = ENCODER_ROTATION_CLOCKWISE_IS_INCREASE_SPEED;
 // false = Counterclockwise  true = clockwise
 
-const boolean toggleDirectionOnEncoderButtonPressWhenStationary = TOGGLE_DIRECTION_ON_ENCODER_BUTTON_PRESSED_WHEN_STATIONAY;
+const boolean toggleDirectionOnEncoderButtonPressWhenStationary = TOGGLE_DIRECTION_ON_ENCODER_BUTTON_PRESSED_WHEN_STATIONARY;
 // true = if the locos(s) are stationary, clicking the encoder button will toggle the direction
 
 //4x3 keypad
@@ -607,7 +603,7 @@ void connectSsid() {
       keypadUseType = KEYPAD_USE_SELECT_WITHROTTLE_SERVER;
 
       // setup the bonjour listener
-      if (!MDNS.begin("DCC-Locomotive-Throttle")) {
+      if (!MDNS.begin("WiTcontroller")) {
         debug_println("Error setting up MDNS responder!");
         oledText[2] = msg_bounjour_setup_failed;
         writeOledArray(false, false, true, true);
@@ -1118,7 +1114,7 @@ void setup() {
   clearOledArray(); oledText[0] = appName; oledText[6] = appVersion; oledText[2] = msg_start;
   writeOledArray(false, false, true, true);
 
-  delay(1000);
+  delay(3000);
   debug_println("Start"); 
 
   rotaryEncoder.begin();  //initialize rotary encoder
@@ -1644,8 +1640,22 @@ void doMenu() {
         toggleDirection(currentThrottleIndex);
         break;
       }
-     case MENU_ITEM_SPEED_STEP_MULTIPLIER: { // toggle speed step additional Multiplier
+    case MENU_ITEM_SPEED_STEP_MULTIPLIER: { // toggle speed step additional Multiplier
         toggleAdditionalMultiplier();
+        break;
+      }
+    case MENU_ITEM_ROUTE: {  // route
+        if (menuCommand.length()>1) {
+          String route = routePrefix + menuCommand.substring(1, menuCommand.length());
+          // if (!route.equals("")) { // a loco is specified
+            debug_print("route: "); debug_println(route);
+            wiThrottleProtocol.setRoute(route);
+          // }
+          writeOledSpeed();
+        } else {
+          page = 0;
+          writeOledRouteList("");
+        }
         break;
       }
    case MENU_ITEM_THROW_POINT: {  // throw point
@@ -1676,23 +1686,9 @@ void doMenu() {
         }
         break;
       }
-    case MENU_ITEM_ROUTE: {  // route
-        if (menuCommand.length()>1) {
-          String route = routePrefix + menuCommand.substring(1, menuCommand.length());
-          // if (!route.equals("")) { // a loco is specified
-            debug_print("route: "); debug_println(route);
-            wiThrottleProtocol.setRoute(route);
-          // }
-          writeOledSpeed();
-        } else {
-          page = 0;
-          writeOledRouteList("");
-        }
-        break;
-      }
-    case MENU_ITEM_TRACK_POWER: {
-        powerToggle();
-        break;
+    case MENU_ITEM_CHANGE_THROTTLE: {
+      nextThrottle();
+      break; 
       }
     case MENU_ITEM_EXTRAS: { // Extra menu - e.g. disconnect/reconnect/sleep
         char subCommand = menuCommand.charAt(1);
@@ -1707,6 +1703,10 @@ void doMenu() {
                 writeOledEditConsist();
                 break;
               } 
+            case EXTRA_MENU_CHAR_TRACK_POWER: {
+                powerToggle();
+                break;
+              }  
             case EXTRA_MENU_CHAR_HEARTBEAT_TOGGLE: { // disable/enable the heartbeat Check
                 toggleHeartbeatCheck();
                 writeOledSpeed();
@@ -1798,6 +1798,7 @@ void resetAllFunctionFollow() {
     functionFollow[i][0] = CONSIST_FUNCTION_FOLLOW_F0;
     functionFollow[i][1] = CONSIST_FUNCTION_FOLLOW_F1;
     functionFollow[i][2] = CONSIST_FUNCTION_FOLLOW_F2;
+    functionFollow[i][3] = CONSIST_FUNCTION_FOLLOW_F6;
     for (int i=3; i<28; i++) {
       functionFollow[i][i] = CONSIST_FUNCTION_FOLLOW_OTHER_FUNCTIONS;
     }
