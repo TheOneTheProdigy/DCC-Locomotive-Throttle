@@ -5,7 +5,7 @@
 
 #include <WiFi.h>                 // https://github.com/espressif/arduino-esp32/tree/master/libraries/WiFi     
 #include <ESPmDNS.h>              // https://github.com/espressif/arduino-esp32/blob/master/libraries/ESPmDNS 
-#include <WiThrottleProtocol.h>   // https://github.com/flash62au/WiThrottleProtocol                          
+#include <WiThrottleProtocol.h>   // https://github.com/TheOneTheProdigy/WiThrottleProtocol                             
 #include <AiEsp32RotaryEncoder.h> // https://github.com/igorantolic/ai-esp32-rotary-encoder                    
 #include <Keypad.h>               // https://www.arduinolibraries.info/libraries/keypad                     
 #include <U8g2lib.h>              // https://github.com/olikraus/u8g2  
@@ -18,9 +18,9 @@
 #include "static.h"              // change for non-english languages
 #include "actions.h"
 
-#include "WiTcontroller.h"
+#include "DCC-Locomotive-Throttle.h"
 
-#if WITCONTROLLER_DEBUG == 0
+#if DCC-LOCOMOTIVE-THROTTLE_DEBUG == 0
  #define debug_print(...) Serial.print(__VA_ARGS__)
  #define debug_println(...) Serial.print(__VA_ARGS__); Serial.print(" ("); Serial.print(millis()); Serial.println(")")
  #define debug_printf(...) Serial.printf(__VA_ARGS__)
