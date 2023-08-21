@@ -22,9 +22,9 @@
 #include "static.h"              // change for non-english languages
 #include "actions.h"
 
-#include "DCC-Loco-Throttle.h"
+#include "DCC-Locomotive-Throttle.h"
 
-#if DCC-Loco-Throttle_DEBUG == 0
+#if DCC-Locomotive-Throttle_DEBUG == 0
  #define debug_print(...) Serial.print(__VA_ARGS__)
  #define debug_println(...) Serial.print(__VA_ARGS__); Serial.print(" ("); Serial.print(millis()); Serial.println(")")
  #define debug_printf(...) Serial.printf(__VA_ARGS__)
@@ -607,7 +607,7 @@ void connectSsid() {
       keypadUseType = KEYPAD_USE_SELECT_WITHROTTLE_SERVER;
 
       // setup the bonjour listener
-      if (!MDNS.begin("DCC-Loco-Throttle")) {
+      if (!MDNS.begin("DCC-Locomotive-Throttle")) {
         debug_println("Error setting up MDNS responder!");
         oledText[2] = msg_bounjour_setup_failed;
         writeOledArray(false, false, true, true);
