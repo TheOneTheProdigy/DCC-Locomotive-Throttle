@@ -60,7 +60,7 @@ const int keypadHoldTime = 200;   // in miliseconds
     #define CONSIST_FUNCTION_FOLLOW_F2                  CONSIST_LEAD_LOCO            // horn
 #endif
 #ifndef CONSIST_FUNCTION_FOLLOW_F6
-    #define CONSIST_FUNCTION_FOLLOW_F6                  CONSIST_LEAD_LOCO            // brakes
+    #define CONSIST_FUNCTION_FOLLOW_F6                  CONSIST_ALL_LOCOS            // brakes
 #endif
 #ifndef CONSIST_FUNCTION_FOLLOW_OTHER_FUNCTIONS
     #define CONSIST_FUNCTION_FOLLOW_OTHER_FUNCTIONS     CONSIST_LEAD_LOCO
