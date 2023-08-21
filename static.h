@@ -226,8 +226,8 @@ const char ssidPasswordBlankChar = 164;
 #define CONSIST_LEAD_LOCO 0
 #define CONSIST_ALL_LOCOS 1
 
-#ifndef WITCONTROLLER_DEBUG 
-  #define WITCONTROLLER_DEBUG    0
+#ifndef DCCLOCOTHROTTLE_DEBUG 
+  #define DCCLOCOTHROTTLE_DEBUG    0
 #endif
 
 #ifndef WITHROTTLE_PROTOCOL_DEBUG

@@ -130,9 +130,9 @@
 // *******************************************************************************************************************
 // Debugging
 
-// WitController console debug messages are ENABLED by default
+// DCCLocomotiveThrottle console debug messages are ENABLED by default
 // to disable to console messages, set the following to  1    (i.e. 0 = on  1 = off)
-#define WITCONTROLLER_DEBUG    0
+#define DCCLOCOTHROTTLE_DEBUG    0
 
 // WiThrottleProtocol console debug messages are DISABLED by default
 // to enable console messages, set the follow to  0    (i.e. 0 = on  1 = off)
